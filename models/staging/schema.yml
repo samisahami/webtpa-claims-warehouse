@@ -1,0 +1,68 @@
+version: 2
+
+models:
+  - name: stg_employers
+    description: Clean staging table for employer dimension
+    columns:
+      - name: employer_id
+        tests:
+          - not_null
+          - unique
+      - name: employer_name
+        tests:
+          - not_null
+
+  - name: stg_members
+    description: Clean staging table for members
+    columns:
+      - name: member_id
+        tests:
+          - not_null
+          - unique
+      - name: employer_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_employers')
+              field: employer_id
+
+  - name: stg_providers
+    description: Clean staging table for providers
+    columns:
+      - name: provider_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_claims
+    description: Clean staging table for claim headers
+    columns:
+      - name: claim_id
+        tests:
+          - not_null
+          - unique
+      - name: member_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_members')
+              field: member_id
+      - name: provider_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_providers')
+              field: provider_id
+
+  - name: stg_claim_lines
+    description: Clean staging table for claim lines
+    columns:
+      - name: claim_line_id
+        tests:
+          - not_null
+      - name: claim_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_claims')
+              field: claim_id

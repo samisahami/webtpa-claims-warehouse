@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Python
 __pycache__/
 *.pyc
@@ -12,3 +13,9 @@ logs/
 # OS/editor
 .DS_Store
 .vscode/
+=======
+
+target/
+dbt_packages/
+logs/
+>>>>>>> 4714ce12ce901502aa9488e23ab1e78760fbfa89
