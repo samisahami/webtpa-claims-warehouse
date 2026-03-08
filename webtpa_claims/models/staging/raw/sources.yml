@@ -1,0 +1,44 @@
+version: 2
+
+sources:
+  - name: raw
+    database: WEBTPA_CLAIMS_DB
+    schema: DBT_DEV_RAW
+    tables:
+      - name: employers
+        identifier: employers
+        columns:
+          - name: employer_id
+            tests: [not_null, unique]
+
+      - name: members
+        identifier: members
+        columns:
+          - name: member_id
+            tests: [not_null, unique]
+          - name: employer_id
+            tests: [not_null]
+
+      - name: providers
+        identifier: providers
+        columns:
+          - name: provider_id
+            tests: [not_null, unique]
+
+      - name: claims
+        identifier: claims
+        columns:
+          - name: claim_id
+            tests: [not_null, unique]
+          - name: member_id
+            tests: [not_null]
+          - name: provider_id
+            tests: [not_null]
+
+      - name: claim_lines
+        identifier: claim_lines
+        columns:
+          - name: claim_line_id
+            tests: [not_null]
+          - name: claim_id
+            tests: [not_null]
