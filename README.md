@@ -72,8 +72,8 @@ SELECT
     SUM(total_claim_cost) AS total_spend
 FROM fct_claim_lines
 GROUP BY employer_id
-ORDER BY total_spend DESC;```
-
+ORDER BY total_spend DESC;
+```
 
 This helps recruiters immediately understand **what the data is used for**.
 
@@ -83,4 +83,4 @@ This helps recruiters immediately understand **what the data is used for**.
 
 The project uses dbt documentation to visualize model dependencies and lineage.
 
-![Data Lineage](docs/lineage_graph.png)
+![Data Lineage](../docs/lineage_graph.png)
