@@ -81,4 +81,4 @@ This helps recruiters immediately understand **what the data is used for**.
 
 The project uses dbt documentation to visualize model dependencies and lineage.
 
-![Data Lineage](,,docs/lineage_graph.png)
+![Data Lineage](..docs/lineage_graph.png)
