@@ -62,6 +62,8 @@ Grain: one row per **claim line**.
 
 ## Example Analytics Query
 
+## Example Analytics Query
+
 Example query to calculate employer healthcare spend:
 
 ```sql
@@ -70,7 +72,7 @@ SELECT
     SUM(total_claim_cost) AS total_spend
 FROM fct_claim_lines
 GROUP BY employer_id
-ORDER BY total_spend DESC;
+ORDER BY total_spend DESC;```
 
 
 This helps recruiters immediately understand **what the data is used for**.
