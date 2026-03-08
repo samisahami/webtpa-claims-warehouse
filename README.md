@@ -62,7 +62,6 @@ Grain: one row per **claim line**.
 
 ## Example Analytics Query
 
-## Example Analytics Query
 
 Example query to calculate employer healthcare spend:
 
@@ -75,7 +74,7 @@ GROUP BY employer_id
 ORDER BY total_spend DESC;
 ```
 
-This helps recruiters immediately understand **what the data is used for**.
+This query demonstrates how the fact table can be used for employer healthcare spend analysis.
 
 ---
 
