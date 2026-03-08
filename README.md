@@ -77,11 +77,6 @@ This helps recruiters immediately understand **what the data is used for**.
 
 ---
 
-# 4️⃣ (Optional but strong) Add dbt Docs Lineage Screenshot
-
-After you commit later, add:
-
-```markdown
 ## Data Lineage
 
 The project uses dbt documentation to visualize model dependencies and lineage.
