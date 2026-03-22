@@ -29,16 +29,16 @@ jobs:
             outputs:
               dev:
                 type: snowflake
-                account: ${{ secrets.SNOWFLAKE_ACCOUNT }}
-                user: ${{ secrets.SNOWFLAKE_USER }}
-                password: ${{ secrets.SNOWFLAKE_PASSWORD }}
-                role: ${{ secrets.SNOWFLAKE_ROLE }}
-                database: ${{ secrets.SNOWFLAKE_DATABASE }}
-                warehouse: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
-                schema: ${{ secrets.SNOWFLAKE_SCHEMA }}
+                account: mrvdjdj-abc66703
+                user: SAMISAHAMI
+                password: "${{ secrets.SNOWFLAKE_PASSWORD }}"
+                role: ACCOUNTADMIN
+                database: WEBTPA_CLAIMS_DB
+                warehouse: WH_DBT_DEV
+                schema: DBT_DEV
                 threads: 1
           EOF
-
+          
       - name: Debug dbt connection
         working-directory: webtpa_claims
         env:
