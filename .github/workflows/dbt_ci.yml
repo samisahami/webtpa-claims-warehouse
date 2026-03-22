@@ -20,9 +20,39 @@ jobs:
       - name: Install dbt
         run: pip install dbt-snowflake
 
-      - name: Run dbt
-        working-directory: webtpa_claims
+      - name: Create dbt profiles
         run: |
-          dbt seed
-          dbt run
-          dbt test
+          mkdir -p /home/runner/.dbt
+          cat > /home/runner/.dbt/profiles.yml << 'EOF'
+          webtpa_claims:
+            target: dev
+            outputs:
+              dev:
+                type: snowflake
+                account: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+                user: ${{ secrets.SNOWFLAKE_USER }}
+                password: ${{ secrets.SNOWFLAKE_PASSWORD }}
+                role: ${{ secrets.SNOWFLAKE_ROLE }}
+                database: ${{ secrets.SNOWFLAKE_DATABASE }}
+                warehouse: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
+                schema: ${{ secrets.SNOWFLAKE_SCHEMA }}
+                threads: 1
+          EOF
+
+      - name: Run dbt seed
+        working-directory: webtpa_claims
+        env:
+          DBT_PROFILES_DIR: /home/runner/.dbt
+        run: dbt seed
+
+      - name: Run dbt models
+        working-directory: webtpa_claims
+        env:
+          DBT_PROFILES_DIR: /home/runner/.dbt
+        run: dbt run
+
+      - name: Run dbt tests
+        working-directory: webtpa_claims
+        env:
+          DBT_PROFILES_DIR: /home/runner/.dbt
+        run: dbt test
