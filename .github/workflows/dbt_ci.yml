@@ -39,6 +39,12 @@ jobs:
                 threads: 1
           EOF
 
+      - name: Debug dbt connection
+        working-directory: webtpa_claims
+        env:
+          DBT_PROFILES_DIR: /home/runner/.dbt
+        run: dbt debug
+
       - name: Run dbt seed
         working-directory: webtpa_claims
         env:
