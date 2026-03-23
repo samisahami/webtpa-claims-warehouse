@@ -29,7 +29,7 @@ jobs:
             outputs:
               dev:
                 type: snowflake
-                account: mrvdjdj-abc66703
+                account: mvrdjdj_abc66703
                 user: SAMISAHAMI
                 password: "${{ secrets.SNOWFLAKE_PASSWORD }}"
                 role: ACCOUNTADMIN
@@ -38,7 +38,7 @@ jobs:
                 schema: DBT_DEV
                 threads: 1
           EOF
-          
+
       - name: Debug dbt connection
         working-directory: webtpa_claims
         env:
