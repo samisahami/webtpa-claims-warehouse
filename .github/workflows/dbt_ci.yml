@@ -20,24 +20,29 @@ jobs:
       - name: Install dbt
         run: pip install dbt-snowflake
 
+      - name: Write private key
+      run: |
+        echo "${{ secrets.SNOWFLAKE_PRIVATE_KEY }}" > /tmp/snowflake_private_key.pem
+        chmod 600 /tmp/snowflake_private_key.pem
+
       - name: Create dbt profiles
         run: |
-          mkdir -p /home/runner/.dbt
-          cat > /home/runner/.dbt/profiles.yml << 'EOF'
-          webtpa_claims:
-            target: dev
-            outputs:
-              dev:
-                type: snowflake
-                account: mvrdjdj_abc66703
-                user: SAMISAHAMI
-                password: "${{ secrets.SNOWFLAKE_PASSWORD }}"
-                role: ACCOUNTADMIN
-                database: WEBTPA_CLAIMS_DB
-                warehouse: WH_DBT_DEV
-                schema: DBT_DEV
-                threads: 1
-          EOF
+        mkdir -p /home/runner/.dbt
+        cat > /home/runner/.dbt/profiles.yml << 'EOF'
+        webtpa_claims:
+          target: dev
+          outputs:
+            dev:
+              type: snowflake
+              account: MVRDJDJ-ABC66703
+              user: SAMISAHAMI
+              private_key_path: /tmp/snowflake_private_key.pem
+              role: ACCOUNTADMIN
+              database: WEBTPA_CLAIMS_DB
+              warehouse: WH_DBT_DEV
+              schema: DBT_DEV
+              threads: 1
+      EOF
 
       - name: Debug dbt connection
         working-directory: webtpa_claims
