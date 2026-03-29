@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # WebTPA Claims Warehouse (Snowflake + dbt + CI)
 
 End-to-end healthcare claims reporting warehouse:
