@@ -94,6 +94,8 @@ The project uses dbt documentation to visualize model dependencies and lineage.
 ![Data Lineage](https://raw.githubusercontent.com/samisahami/webtpa-claims-warehouse/main/docs/lineage_graph.png)
 >>>>>>> 4714ce12ce901502aa9488e23ab1e78760fbfa89
 
+## CI/CD Pipeline
+
 This project uses GitHub Actions to validate the dbt pipeline automatically on push.
 
 The workflow:
@@ -109,6 +111,8 @@ The workflow:
 
 The CI pipeline uses Snowflake key-pair authentication instead of password-based login so it can run securely in GitHub Actions without MFA blocking automated connections.
 
-A key implementation detail in this project was resolving Snowflake MFA restrictions in CI by switching from username/password authentication to RSA key-pair authentication for GitHub Actions.
+A key implementation detail was resolving Snowflake MFA restrictions in CI by transitioning from username/password authentication to RSA key-pair authentication for secure, automated GitHub Actions execution.
+
+This setup mirrors real-world production analytics engineering workflows where secure, non-interactive authentication is required for automated data pipelines.
 
 ![CI Pipeline Success](docs/ci_pipeline_success.png)
