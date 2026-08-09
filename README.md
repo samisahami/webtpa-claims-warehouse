@@ -6,7 +6,7 @@ End-to-end healthcare claims reporting warehouse:
 - Data quality tests
 - CI with GitHub Actions
 - Reporting-ready marts (employer + member + claims)
-=======
+
 # Healthcare Claims Analytics Engineering Pipeline
 
 End-to-end analytics engineering project modeling healthcare claims data using **dbt + Snowflake**.
@@ -92,7 +92,7 @@ This query demonstrates how the fact table can be used for employer healthcare s
 The project uses dbt documentation to visualize model dependencies and lineage.
 
 ![Data Lineage](https://raw.githubusercontent.com/samisahami/webtpa-claims-warehouse/main/docs/lineage_graph.png)
->>>>>>> 4714ce12ce901502aa9488e23ab1e78760fbfa89
+
 
 ## CI/CD Pipeline
 
